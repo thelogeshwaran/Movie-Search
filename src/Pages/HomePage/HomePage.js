@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
-import Navbar from "../Navbar/Navbar";
-import MovieList from "../MovieList/MovieList";
-import requests from "../Requests/requests";
+import Navbar from "../../Navbar/Navbar";
+import MovieList from "../../MovieList/MovieList";
+import requests from "../../Requests/requests";
 import "./HomePage.css"
 
 function HomePage() {

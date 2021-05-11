@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     height: 85vh;
+    
+    /* border: 1px solid red; */
 }
 
 .homepage__content{

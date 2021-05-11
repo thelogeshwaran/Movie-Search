@@ -2,6 +2,7 @@ import React from 'react';
 import "./Navbar.css";
 import requests from "../Requests/requests";
 
+
 function Navbar({setSelectedOption}) {
     return (
         <div className="nav">
@@ -15,7 +16,7 @@ function Navbar({setSelectedOption}) {
             <h2 onClick={()=> setSelectedOption(requests.fetchSciFi)}>Sci-fi</h2>
             <h2 onClick={()=> setSelectedOption(requests.fetchWestern)}>Western</h2>
             <h2 onClick={()=> setSelectedOption(requests.fetchAnimation)}>Animation</h2>
-            <h2 onClick={()=> setSelectedOption(requests.fetchTv)}> TV Movie</h2>
+            <h2 onClick={()=> setSelectedOption(requests.fetchTv)}> TV-Movie</h2>
         </div>
     )
 }

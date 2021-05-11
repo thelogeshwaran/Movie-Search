@@ -7,7 +7,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     color: white;
-    height: 10vh;
+    /* border: 1px solid red; */
 }
 
 .header::-webkit-scrollbar{
@@ -57,4 +57,25 @@
     letter-spacing: 3px;
     margin-left: auto;
     margin-right: auto
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    min-width: 300px;
+    width: 60vw;
+    height: 40px;
+    border-radius: 50px;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    background-color: white;
+    padding: 0 10px;
+}
+
+.search > input {
+    flex: 1;
+    height: 90%;
+    border-radius: 50px;
+    padding: 0 10px;
+    font-size: 1.2rem;
 }
