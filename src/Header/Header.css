@@ -5,8 +5,9 @@
     align-items: center;
     padding: 20px;
     overflow-x: scroll;
+    overflow-y: hidden;
     color: white;
-    
+    height: 10vh;
 }
 
 .header::-webkit-scrollbar{

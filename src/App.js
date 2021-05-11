@@ -1,18 +1,28 @@
 import './App.css';
 import React, { useState } from "react";
 import Header from "./Header/Header";
-import Navbar from "./Navbar/Navbar";
-import MovieList from "./MovieList/MovieList";
-import requests from "./Requests/requests";
+import HomePage from "./Pages/HomePage";
+import Authentication from "./Authentication/Authentication";
+import { useAuthProvider } from "./Context/AuthProvider";
+
+
 
 function App() {
-  const [selectedOption, setSelectedOption] = useState(requests.fetchAction);
-
+  const { user } = useAuthProvider();
+  
   return (
-    <div className="App">
-      <Header/>
-      <Navbar setSelectedOption={setSelectedOption}/>
-      <MovieList selectedOption={selectedOption}/>
+    <div >
+      {
+        user ? 
+        <div className="App">
+          <Header/>
+          <HomePage/>
+          </div>
+        :
+      <Authentication/>
+
+      }
+      
     </div>
   );
 }

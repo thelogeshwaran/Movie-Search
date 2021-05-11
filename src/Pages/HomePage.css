@@ -1,0 +1,9 @@
+.homepage{
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+}
+
+.homepage__content{
+    overflow-y: scroll;
+}

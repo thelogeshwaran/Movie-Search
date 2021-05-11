@@ -5,9 +5,14 @@ import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonIcon from '@material-ui/icons/Person';
 import "./Header.css";
+import { auth } from "../Firebase/firebase";
 
 
 function Header() {
+    const signOut = () => {
+        auth.signOut();
+      };
+
     return (
         <div className="header">
             <div className="header__name">
@@ -31,7 +36,7 @@ function Header() {
                     <p>Search</p>
                 </div>
                 <div className="header__icon">
-                <PersonIcon/>
+                <PersonIcon onClick={()=> signOut()}/>
                     <p>Profile</p>
                 </div>
             </div>

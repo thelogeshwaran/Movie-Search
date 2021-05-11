@@ -1,6 +1,22 @@
 .App{
   width: 100vw;
+  height: 100vh;
   background-image: linear-gradient(to right, #051421, #042727);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column; 
   overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #051421;
+  border-radius: 0px;
 }

@@ -1,6 +1,6 @@
 .movie__list{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    overflow-x: hidden;   
+    justify-content: center; 
+    overflow: hidden;  
 }
