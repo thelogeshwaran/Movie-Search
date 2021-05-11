@@ -1,0 +1,40 @@
+.moviecard{
+    height: 300px;
+    width: 350px;
+    color: white;
+    padding: 20px;
+    transition: transform 100ms;
+    margin-bottom: 10px;
+    
+}
+
+
+.moviecard > img{
+    height: 200px;
+    width: 350px;
+    object-fit: contain;
+}
+
+.moviecard > h3 {
+    margin-top: 10px;
+}
+
+.moviecard:hover{
+    transform: scale(1.1);
+}
+
+.moviecard:hover > .moviecard__about{
+    display: flex;
+}
+
+.moviecard__about{
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
+.moviecard__likes{
+    display: flex;
+    align-items: center;
+}
