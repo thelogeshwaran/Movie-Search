@@ -5,3 +5,11 @@
     overflow-x: hidden;
     overflow-y: scroll;  
 }
+
+.search__message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    color: white;
+}

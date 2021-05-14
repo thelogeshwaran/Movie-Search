@@ -3,13 +3,14 @@ import "./MovieCard.css"
 import TextTruncate from 'react-text-truncate';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import { motion } from "framer-motion";
+import {Link} from "react-router-dom";
 
 
 
 function MovieCard({movie}) {
-
     const image_api ="https://image.tmdb.org/t/p/original/"
     return (
+        <Link to={`/details/${movie.id}`} className="link">
         <div className="moviecard">
             {movie.backdrop_path || movie.poster__path ?
               <motion.img initial={{opacity:0}}
@@ -39,6 +40,7 @@ function MovieCard({movie}) {
                 </div>
                 
         </div>
+        </Link>
     )
 }
 

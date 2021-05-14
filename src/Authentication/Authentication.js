@@ -87,8 +87,8 @@ function Authentication() {
                 {
                     !newUser ?
                      <form onSubmit={(event) => handleLogin(event)}>
-                    <input type="email"  className="input"  placeholder="Email" required onChange={(e) => setEmail(e.target.value)}></input>
-                    <input type="password"  className="input"  placeholder="Password" required  onChange={(e) => setPassword(e.target.value)}></input>
+                    <input type="email"  className="input"  placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                    <input type="password"  className="input"  placeholder="Password" required value={password}  onChange={(e) => setPassword(e.target.value)}></input>
                     {/* <div>
                         Credentials : Email - admin@gmail.com
                         <br /> password : admin@45
@@ -97,9 +97,9 @@ function Authentication() {
                     </form>
                     :
                     <form onSubmit={(event) => handleSignUp(event)}>
-                    <input type="text"  className="input"  placeholder="UserName" required></input>
-                    <input type="email"  className="input"  placeholder="Email" required onChange={(e) => setEmail(e.target.value)}></input>
-                    <input type="password"  className="input"  placeholder="Password" required  onChange={(e) => setPassword(e.target.value)}></input>
+                    <input type="text"  className="input"  placeholder="UserName" value={name} required onChange={(e) => setName(e.target.value)}></input>
+                    <input type="email"  className="input"  placeholder="Email" required   value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                    <input type="password"  className="input"  placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)}></input>
                     <button type="submit" className="submit">Sign Up</button>
                     </form>
                 }
