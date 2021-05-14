@@ -9,6 +9,7 @@
     rgba(12.94%, 12.16%, 12.16%, 1) 150px,
     rgba(12.94%, 12.16%, 12.16%, 0.84) 100%
   );
+  padding-bottom: 40px;
 }
 
 .detailPage__background {
@@ -86,4 +87,22 @@
 
 .detailPage__about > h3 {
   margin: 10px 0;
+}
+.modal{
+ 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(10px);
+  
+}
+.react-player{
+  display: block;
+  max-width: 60%;
+  max-height: 80%;
+  margin: 100px auto;
+  border: 3px solid white;
 }
