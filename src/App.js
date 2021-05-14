@@ -11,12 +11,16 @@ import LikedPage from "./Pages/Liked/LikedPage";
 import WatchLater from "./Pages/WatchLater/WatchLater";
 import PlayList from "./Pages/PlayList/PlayList";
 import IndividualList from "./Pages/IndividualList/IndividualList";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { user } = useAuthProvider();
 
   return (
     <div>
+      <ToastContainer limit={3}
+      />
       {user ? (
         <div className="App">
           <BrowserRouter>
@@ -41,7 +45,7 @@ function App() {
               <Route path="/playList/:userId">
               <PlayList/>
               </Route>
-              <Route path="/invdiuallist/:listId">
+              <Route path="/invdiuallist/:listId/:userId">
               <IndividualList/>
               </Route>
             </Routes>

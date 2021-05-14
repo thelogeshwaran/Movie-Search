@@ -21,9 +21,9 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import firebase from "firebase";
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player";
 import axios from "axios";
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 
 function DetailPage() {
   const [data, setData] = useState("");
@@ -31,11 +31,13 @@ function DetailPage() {
   const { user } = useAuthProvider();
   const [like, setLike] = useState(false);
   const [filteredMovie, setFilteredMovie] = useState("");
-  const { likedMovies, playList, setPlayList } = useMovieProvider();
+  const { likedMovies, playList, watchLater } = useMovieProvider();
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-  const [ selected, setSelected] = useState(true);
+  const [selected, setSelected] = useState(false);
+  const [watchlatermovie, setWatchLaterMovie] = useState("");
+  const [watchLaterIcon, setWatchLaterIcon] = useState(false);
 
   const movie_api = "https://api.themoviedb.org/3/movie/";
   const image_api = "https://image.tmdb.org/t/p/original/";
@@ -54,11 +56,18 @@ function DetailPage() {
     const findMovie = likedMovies.filter(
       (movie) => movie.data.data.id === data.id
     );
+    const watchlatermovie = watchLater.filter(
+      (movie) => movie.data.data.id === data.id
+    );
+    if (watchlatermovie.length > 0) {
+      setWatchLaterMovie(watchlatermovie);
+      setWatchLaterIcon(true);
+    }
     if (findMovie.length > 0) {
       setFilteredMovie(findMovie);
       setLike(true);
     }
-  }, [data]);
+  }, [data,likedMovies,watchLater]);
 
   function timeCalculator(totalMinutes) {
     var hours = Math.floor(totalMinutes / 60);
@@ -75,21 +84,32 @@ function DetailPage() {
           data: data,
         });
     } else {
+        console.log(filteredMovie)
       db.collection("users")
         .doc(user.uid)
         .collection("liked")
         .doc(filteredMovie[0].id)
         .delete();
+        
     }
   };
   const handleWatchLater = () => {
-    db.collection("users")
+    if(!watchLaterIcon){
+        db.collection("users")
       .doc(user.uid)
       .collection("watchlater")
       .add({
         name: data.title || data.original_name,
         data: data,
       });
+    }else{
+        console.log(watchlatermovie)
+        db.collection("users")
+        .doc(user.uid)
+        .collection("watchlater")
+        .doc(watchlatermovie[0]?.id)
+        .delete();
+    }
   };
 
   const handleClick = (event) => {
@@ -97,11 +117,13 @@ function DetailPage() {
   };
 
   const handleClose = (name) => {
-    db.collection("users")
-      .doc(user.uid)
-      .collection("playlist")
-      .doc(name)
-      .update({ data: firebase.firestore.FieldValue.arrayUnion(data) });
+    if (name) {
+      db.collection("users")
+        .doc(user.uid)
+        .collection("playlist")
+        .doc(name)
+        .update({ data: firebase.firestore.FieldValue.arrayUnion(data) });
+    }
     setAnchorEl(null);
   };
 
@@ -123,12 +145,12 @@ function DetailPage() {
     setName("");
   };
 
-  const handlePlayer = (e)=>{
+  const handlePlayer = (e) => {
     if (e.target.classList.contains("modal")) {
-        setSelected(null);
-      }
-  }
-  console.log(data)
+      setSelected(null);
+    }
+  };
+//   console.log(data);
   //   console.log(playList)
 
   return (
@@ -176,7 +198,7 @@ function DetailPage() {
               {data.runtime && timeCalculator(data.runtime)}
             </div>
             <div className="detailPage__likes">
-              <ThumbUpAltIcon />
+              <ThumbUpAltIcon style={{ marginRight: "10px" }} />
               {data?.vote_count}
             </div>
             <div className="detailPage__icons">
@@ -205,7 +227,7 @@ function DetailPage() {
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
-                    onClose={handleClose}
+                    onClose={() => handleClose()}
                   >
                     {playList.length > 0 &&
                       playList.map((data) => (
@@ -258,11 +280,19 @@ function DetailPage() {
               </Tooltip>
               <Tooltip title="Watch Later">
                 <IconButton>
-                  <WatchLaterIcon onClick={() => handleWatchLater()} />
+                  <WatchLaterIcon
+                    onClick={() => {
+                      handleWatchLater();
+                      setWatchLaterIcon(!watchLaterIcon);
+                    }}
+                    style={
+                      watchLaterIcon ? { color: "#EC4899" } : { color: "white" }
+                    }
+                  />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Play Trailer">
-              <IconButton onClick={()=>setSelected(true)}>
+                <IconButton onClick={() => setSelected(true)}>
                   <PlayArrowIcon />
                 </IconButton>
               </Tooltip>
@@ -277,19 +307,19 @@ function DetailPage() {
           </div>
         </div>
       </div>
-      {
-          selected  && 
-          <div className="modal" onClick={handlePlayer}>
-              <ReactPlayer
-                className='react-player'
-                url={`https://youtu.be/${data?.videos?.results[0].key || data?.videos?.results[1].key }`}
-                width='100%'
-                height='100%'
-                controls="true"
-                />
-            </div>
-      }
-      
+      {selected && (
+        <div className="modal" onClick={handlePlayer}>
+          <ReactPlayer
+            className="react-player"
+            url={`https://youtu.be/${
+              data?.videos?.results[0].key || data?.videos?.results[1].key
+            }`}
+            width="100%"
+            height="100%"
+            controls="true"
+          />
+        </div>
+      )}
     </div>
   );
 }

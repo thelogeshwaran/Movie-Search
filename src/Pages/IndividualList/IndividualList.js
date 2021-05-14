@@ -5,22 +5,20 @@ import { db } from "../../Firebase/firebase";
 import MovieCard from "../../MovieCard/MovieCard";
 import ClearIcon from '@material-ui/icons/Clear';
 import IconButton from '@material-ui/core/IconButton';
-import { useAuthProvider} from "../../Context/AuthProvider";
 import firebase from "firebase"
 
 
 
 
 function IndividualList() {
-    const {listId} = useParams();
+    const {listId ,userId} = useParams();
     const [ movies,setMovies]= useState([]);
-    const { user } = useAuthProvider();
 
-    console.log("come")
+   
 
     useEffect(() => {
         db.collection("users")
-        .doc(user.uid)
+        .doc(userId)
         .collection("playlist")
         .onSnapshot((snap) => {
           let document = snap.docs.map((doc) => ({
@@ -35,12 +33,12 @@ function IndividualList() {
 
     const removeLike = (id)=>{
         db.collection("users")
-        .doc(user.uid)
+        .doc(userId)
         .collection('playlist')
         .doc(listId)
         .update({ data: firebase.firestore.FieldValue.arrayRemove(id)})
     }
-    console.log(movies)
+   
     return (
         <div className="individual">
             <div className="individual__header">

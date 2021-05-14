@@ -9,7 +9,8 @@ export function MovieProvider({ children }) {
   const { user } = useAuthProvider();
   const [likedMovies, setLikedMovies] = useState([]);
   const[ searchOpen, setSearchOpen] = useState(false);
-  const[ playList, setPlayList] = useState([])
+  const[ playList, setPlayList] = useState([]);
+  const [watchLater, setWatchLater]= useState([]);
 
   useEffect(() => {
       db.collection("users")
@@ -17,6 +18,17 @@ export function MovieProvider({ children }) {
       .collection("liked")
       .onSnapshot((snap) => {
         setLikedMovies(snap.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        })))
+        
+      });
+
+      db.collection("users")
+      .doc(user.uid)
+      .collection("watchlater")
+      .onSnapshot((snap) => {
+        setWatchLater(snap.docs.map((doc) => ({
           id: doc.id,
           data: doc.data(),
         })))
@@ -40,7 +52,7 @@ export function MovieProvider({ children }) {
 
 
   return (
-    <MovieContext.Provider value={{ searchOpen, setSearchOpen,likedMovies, setLikedMovies,playList, setPlayList }}>
+    <MovieContext.Provider value={{ searchOpen, setSearchOpen,likedMovies, setLikedMovies,playList, setPlayList,watchLater, setWatchLater }}>
       {children}
     </MovieContext.Provider>
   );

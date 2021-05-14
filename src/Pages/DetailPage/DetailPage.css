@@ -7,9 +7,9 @@
   background-image: linear-gradient(
     to right,
     rgba(12.94%, 12.16%, 12.16%, 1) 150px,
-    rgba(12.94%, 12.16%, 12.16%, 0.84) 100%
+    rgba(12.94%, 12.16%, 12.16%, 0.84) 20%
   );
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
 }
 
 .detailPage__background {
@@ -34,7 +34,7 @@
   min-width: 300px;
   height: auto;
   width: 400px;
-  max-height:500px ;
+  max-height:450px ;
 }
 
 .detailPage__img > img {
@@ -95,6 +95,9 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: saturate(180%) blur(10px);
   
@@ -103,6 +106,10 @@
   display: block;
   max-width: 60%;
   max-height: 80%;
-  margin: 100px auto;
+  /* margin: 100px auto; */
   border: 3px solid white;
 }
+
+
+/* max-width: 350px;
+  max-height: 300px; */

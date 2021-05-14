@@ -4,6 +4,7 @@ import MovieList from "../../MovieList/MovieList";
 import requests from "../../Requests/requests";
 import "./HomePage.css"
 
+
 function HomePage() {
     const [selectedOption, setSelectedOption] = useState(requests.fetchAction);
     return (

@@ -13,6 +13,8 @@ import {useMovieProvider} from "../Context/MovieProvider";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useAuthProvider } from "../Context/AuthProvider";
+import { GiPopcorn } from "react-icons/gi";
+import { toast } from "react-toastify"
 
 
 
@@ -22,6 +24,10 @@ function Header() {
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const { user } = useAuthProvider();
+
+    const handleToast = ()=>{
+      
+    }
     // console.log(user)
     const signOut = () => {
         auth.signOut();
@@ -42,7 +48,7 @@ function Header() {
         <div >
             <div className="header">
             <div className="header__name">
-                <h2>hulu</h2> 
+                <h2><GiPopcorn style={{marginBottom:"10px", transform: "rotate(30deg)"}}/>DMDB</h2> 
             </div>
             <div className="header__icons">
             
@@ -54,7 +60,7 @@ function Header() {
                     </Link>
                 
                 <div className="header__icon">
-                <FlashOnIcon/>
+                <FlashOnIcon onClick={()=>handleToast()}/>
                     <p>Trending</p>
                 </div>
                 <Link to={`/playlist/${user.uid}`} className="link" >

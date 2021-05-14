@@ -4,6 +4,7 @@ import "./Authentication.css";
 import { FcGoogle } from "react-icons/fc";
 import { useAuthProvider } from "../Context/AuthProvider";
 import firebase from "firebase";
+import { toast } from  "react-toastify";
  
 
 function Authentication() {
@@ -12,7 +13,6 @@ function Authentication() {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const { user, setUser } = useAuthProvider();
-    const [error, setError] = useState("");
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
@@ -39,8 +39,7 @@ function Authentication() {
             clearInputs();
           })
           .catch((error) => {
-            setError(error.message);
-            // handleClick();
+            toast.error(error.message);
           });
       };
     
@@ -58,8 +57,7 @@ function Authentication() {
               });
           })
           .catch((error) => {
-            setError(error.message);
-            // handleClick();
+            toast.error(error.message);
           });
       };
     
@@ -67,8 +65,7 @@ function Authentication() {
         auth
           .signInWithPopup(new firebase.auth.GoogleAuthProvider())
           .catch((error) => {
-            setError(error.message);
-            // handleClick();
+            toast.error(error.message);
           });
       };
 

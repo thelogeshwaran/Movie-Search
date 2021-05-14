@@ -33,13 +33,13 @@ function PlayList() {
                     {
                         movies && movies.map((item)=>(
                             <div className="playlist__separate">
-                                <Link to={`/invdiuallist/${item.id}`} style={{textDecoration:"none",color:"white"}}>
+                                <Link to={`/invdiuallist/${item.id}/${userId}`} style={{textDecoration:"none",color:"white"}}>
                                 <h2>{item.data.name}</h2>
                                 <div className="playlist__body">
                                     {
                                         item.data.data.map((movie)=>(
                                             
-                                                <div className="playlist__data">
+                                                <div className="playlist__data" key={movie.id}>
                                                     <img src={`${image_api}${movie.backdrop_path || movie.poster_path}`}></img>
                                                     <h3>{movie.title || movie.original_name}</h3>
                                                 </div>
