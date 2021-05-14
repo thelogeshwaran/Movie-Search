@@ -7,7 +7,7 @@ function Navbar({setSelectedOption}) {
     return (
         <div className="nav">
             <h2 onClick={()=> setSelectedOption(requests.fetchTrending)}>Trending</h2>
-            <h2 onClick={()=> setSelectedOption(requests.fetchTopRated)}>Top Rated</h2>
+            <h2 onClick={()=> setSelectedOption(requests.fetchTopRated)}>TopRated</h2>
             <h2 onClick={()=> setSelectedOption(requests.fetchAction)}>Action</h2>
             <h2 onClick={()=> setSelectedOption(requests.fetchComedy)}>Comedy</h2>
             <h2 onClick={()=> setSelectedOption(requests.fetchHorror)}>Horror</h2>

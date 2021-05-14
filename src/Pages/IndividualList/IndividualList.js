@@ -46,7 +46,7 @@ function IndividualList() {
             </div>
             <div className="individual__list">
             {
-                movies?.data?.length > 0  ? movies.data.map((movie)=> (
+                movies?.data  ? movies.data.map((movie)=> (
                     <div key={movie.id}>
                         <MovieCard  movie={movie}/>
                         <div className="individual__remove"><IconButton style={{backgroundColor:"#1F2937", color:"white", marginRight:"10px" }} onClick={()=>removeLike(movie)}><ClearIcon/></IconButton>Remove</div>

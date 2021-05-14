@@ -24,6 +24,7 @@ import firebase from "firebase";
 import ReactPlayer from "react-player";
 import axios from "axios";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import { toast } from "react-toastify";
 
 function DetailPage() {
   const [data, setData] = useState("");
@@ -75,45 +76,60 @@ function DetailPage() {
     return `${hours}h ${minutes}m`;
   }
   const handleLike = () => {
-    if (!like) {
-      db.collection("users")
-        .doc(user.uid)
-        .collection("liked")
-        .add({
-          name: data.title || data.original_name,
-          data: data,
-        });
-    } else {
-        console.log(filteredMovie)
-      db.collection("users")
-        .doc(user.uid)
-        .collection("liked")
-        .doc(filteredMovie[0].id)
-        .delete();
-        
+    if(user){
+        if (!like) {
+            db.collection("users")
+              .doc(user.uid)
+              .collection("liked")
+              .add({
+                name: data.title || data.original_name,
+                data: data,
+              });
+              setLike(true)
+          } else {
+              console.log(filteredMovie)
+            db.collection("users")
+              .doc(user.uid)
+              .collection("liked")
+              .doc(filteredMovie[0].id)
+              .delete();
+              setLike(false)
+          }
+    }else{
+        toast.error("You need to LogIn!")
     }
   };
   const handleWatchLater = () => {
-    if(!watchLaterIcon){
-        db.collection("users")
-      .doc(user.uid)
-      .collection("watchlater")
-      .add({
-        name: data.title || data.original_name,
-        data: data,
-      });
+    if(user){
+        if(!watchLaterIcon){
+            db.collection("users")
+          .doc(user.uid)
+          .collection("watchlater")
+          .add({
+            name: data.title || data.original_name,
+            data: data,
+          });
+          setWatchLaterIcon(true);
+        }else{
+            console.log(watchlatermovie)
+            db.collection("users")
+            .doc(user.uid)
+            .collection("watchlater")
+            .doc(watchlatermovie[0]?.id)
+            .delete();
+            setWatchLaterIcon(false);
+        }
     }else{
-        console.log(watchlatermovie)
-        db.collection("users")
-        .doc(user.uid)
-        .collection("watchlater")
-        .doc(watchlatermovie[0]?.id)
-        .delete();
+        toast.error("You need to LogIn!")
     }
   };
 
   const handleClick = (event) => {
+   if(user){
     setAnchorEl(event.currentTarget);
+   }else{
+    toast.error("You need to LogIn!")
+   }
   };
 
   const handleClose = (name) => {
@@ -204,10 +220,8 @@ function DetailPage() {
             <div className="detailPage__icons">
               <Tooltip title="Mark as favorite">
                 <IconButton
-                  onClick={() => {
-                    handleLike();
-                    setLike(!like);
-                  }}
+                  onClick={() => 
+                    handleLike()}
                 >
                   <FavoriteIcon
                     style={like ? { color: "#EC4899" } : { color: "white" }}
@@ -281,10 +295,9 @@ function DetailPage() {
               <Tooltip title="Watch Later">
                 <IconButton>
                   <WatchLaterIcon
-                    onClick={() => {
-                      handleWatchLater();
-                      setWatchLaterIcon(!watchLaterIcon);
-                    }}
+                    onClick={() => 
+                      handleWatchLater()
+                      }
                     style={
                       watchLaterIcon ? { color: "#EC4899" } : { color: "white" }
                     }

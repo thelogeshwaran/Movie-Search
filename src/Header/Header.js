@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import HomeIcon from '@material-ui/icons/Home';
-import FlashOnIcon from '@material-ui/icons/FlashOn';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonIcon from '@material-ui/icons/Person';
@@ -14,7 +13,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useAuthProvider } from "../Context/AuthProvider";
 import { GiPopcorn } from "react-icons/gi";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
+import WatchLaterIcon from '@material-ui/icons/WatchLater';
 
 
 
@@ -47,9 +47,11 @@ function Header() {
     return (
         <div >
             <div className="header">
+            <Link to="/" className="link" >
             <div className="header__name">
                 <h2><GiPopcorn style={{marginBottom:"10px", transform: "rotate(30deg)"}}/>DMDB</h2> 
             </div>
+            </Link>
             <div className="header__icons">
             
                 <Link to="/" className="link" >
@@ -58,21 +60,25 @@ function Header() {
                     <p>Home</p>
                     </div>
                     </Link>
-                
+                <Link to={`/watchlater/${user.uid}`} className="link" >
                 <div className="header__icon">
-                <FlashOnIcon onClick={()=>handleToast()}/>
-                    <p>Trending</p>
+                
+                <WatchLaterIcon onClick={()=>handleToast()}/>
+                    <p>WatchLater</p>
                 </div>
+                </Link>
                 <Link to={`/playlist/${user.uid}`} className="link" >
                 <div className="header__icon">
                 <VideoLibraryIcon/>
                     <p>Collections</p>
                 </div>
                 </Link>
+                <Link to={`/`} className="link" >
                 <div className="header__icon" onClick={()=>setSearchOpen(!searchOpen)}>
                 <SearchIcon />
                     <p >Search</p>
                 </div>
+                </Link>
                 <div className="header__icon" aria-controls="simple-menu"
               aria-haspopup="true"
               onClick={handleClick}>
@@ -91,7 +97,12 @@ function Header() {
                   handleClose();
                 }}
               >
-                {user?.displayName}
+                {user?
+                 user.displayName : 
+                 <Link to="/login" className="link" >
+                   LOGIN
+                 </Link>
+                }
               </MenuItem>
               <Link to={`/playlist/${user.uid}`} className="link" >
               <MenuItem
@@ -120,13 +131,14 @@ function Header() {
                 WatchLater
               </MenuItem>
               </Link>
+              { user && 
               <MenuItem
-                onClick={() => {
-                  signOut();
-                }}
-              >
-                Logout
-              </MenuItem>
+              onClick={() => {
+                signOut();
+              }}
+            >
+              Logout
+            </MenuItem>}
             </Menu>
             </div>
             </div>

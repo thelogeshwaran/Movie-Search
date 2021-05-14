@@ -21,17 +21,15 @@ function App() {
     <div>
       <ToastContainer limit={3}
       />
-      {user ? (
         <div className="App">
           <BrowserRouter>
             <Header />
             <Routes>
               <Route path="/">
                 <HomePage />
-                
               </Route>
               <Route path="/search/:query">
-                <SearchPage />
+                <SearchPage /> 
               </Route>
               <Route path="/details/:movieId">
                 <DetailPage />
@@ -48,12 +46,15 @@ function App() {
               <Route path="/invdiuallist/:listId/:userId">
               <IndividualList/>
               </Route>
+              <Route path="/login">
+              <Authentication/>
+              </Route>
             </Routes>
           </BrowserRouter>
         </div>
-      ) : (
-        <Authentication />
-      )}
+        
+        
+      
     </div>
   );
 }

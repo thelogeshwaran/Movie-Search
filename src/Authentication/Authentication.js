@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useAuthProvider } from "../Context/AuthProvider";
 import firebase from "firebase";
 import { toast } from  "react-toastify";
+import { useNavigate } from "react-router-dom";
  
 
 function Authentication() {
@@ -13,11 +14,13 @@ function Authentication() {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const { user, setUser } = useAuthProvider();
+    const navigate = useNavigate();
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
           if (user) {
             setUser(user);
+            navigate("/")
           } else {
             setUser(false);
           }

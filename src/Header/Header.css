@@ -34,6 +34,7 @@
 
 .header__name{
     height: 80px;
+    color: white;
 }
 
 .header__name > h2 {
