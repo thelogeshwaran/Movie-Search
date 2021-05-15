@@ -4,7 +4,13 @@ import Header from "./Components/Header/Header";
 import HomePage from "./Pages/HomePage/HomePage";
 import Authentication from "./Authentication/Authentication";
 import { useAuthProvider } from "./Context/AuthProvider";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import SearchPage from "./Pages/Searchpage/SearchPage";
 import DetailPage from "./Pages/DetailPage/DetailPage";
 import LikedPage from "./Pages/Liked/LikedPage";
@@ -37,13 +43,13 @@ function App() {
               <DetailPage />
             </Route>
             <Route path="/liked/:userId">
-              <LikedPage />
+              {user ? <LikedPage /> : <Navigate to="/login" />}
             </Route>
             <Route path="/watchlater/:userId">
-              <WatchLater />
+              {user ? <WatchLater /> : <Navigate to="/login" />}
             </Route>
             <Route path="/playList/:userId">
-              <PlayList />
+              {user ? <PlayList /> : <Navigate to="/login" />}
             </Route>
             <Route path="/invdiuallist/:listId/:userId">
               <IndividualList />

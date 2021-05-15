@@ -29,14 +29,21 @@ function SearchPage() {
   }, [query]);
 
   return (
-    <div className="search__list">
-      {searchMovies.length > 0 ? (
-        searchMovies.map((movie) => <MovieCard movie={movie} />)
-      ) : (
-        <div className="search__message">
-          <h2>There is no movies for your search .. </h2>
-        </div>
-      )}
+    <div className="searchPage">
+      <div className="searchPage__header">
+        <h2>
+          Search Results for <em>{query}</em>
+        </h2>
+      </div>
+      <div className="search__list">
+        {searchMovies.length > 0 ? (
+          searchMovies.map((movie) => <MovieCard movie={movie} />)
+        ) : (
+          <div className="search__message">
+            <h2>There is no movies for your search .. </h2>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

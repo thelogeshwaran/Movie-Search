@@ -159,16 +159,16 @@ function Header() {
               type="text"
               value={search}
               placeholder="Search.."
+              required
               onChange={(e) => setSearch(e.target.value)}
             ></input>
-            {search ? (
-              <ClearIcon
-                onClick={() => setSearch("")}
-                style={{ cursor: "pointer" }}
-              />
-            ) : (
-              <SearchIcon />
-            )}
+            <ClearIcon
+              onClick={() => {
+                setSearch("");
+                setSearchOpen(false);
+              }}
+              style={{ cursor: "pointer" }}
+            />
           </div>
         </form>
       )}

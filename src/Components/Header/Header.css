@@ -97,6 +97,14 @@
   .mobile {
     display: block;
   }
+
+  .header__name > h2 {
+    font-size: 2rem;
+  }
+  .header__name {
+    color: white;
+    height: 60px;
+  }
   .desktop {
     display: none;
   }
