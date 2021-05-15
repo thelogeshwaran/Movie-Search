@@ -68,7 +68,7 @@ function Header() {
           <Link to={`/playlist/${user.uid}`} className="link">
             <div className="header__icon">
               <VideoLibraryIcon />
-              <p>Collections</p>
+              <p>PlayList</p>
             </div>
           </Link>
           <Link to={`/`} className="link">

@@ -61,10 +61,9 @@ function MobileNav() {
         >
           <div
             className="mobile__icon"
-            onClick={() => setSearchOpen(!searchOpen)}
           >
             <ThumbUpIcon />
-            <p>Liked Videos</p>
+            <p>Favorites</p>
           </div>
         </Link>
 

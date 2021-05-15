@@ -5,10 +5,13 @@ import { db } from "../../Components/Firebase/firebase";
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import ClearIcon from "@material-ui/icons/Clear";
 import IconButton from "@material-ui/core/IconButton";
+import { useAuthProvider } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 function WatchLater() {
   const { userId } = useParams();
   const [movies, setMovies] = useState([]);
+  const { user } = useAuthProvider();
 
   useEffect(() => {
     db.collection("users")
@@ -25,11 +28,15 @@ function WatchLater() {
   }, []);
 
   const removeLike = (id) => {
-    db.collection("users")
+    if(user){
+      db.collection("users")
       .doc(userId)
       .collection("watchlater")
       .doc(id)
       .delete();
+    }else{
+      toast.error("You need to LogIn!");
+    }
   };
   return (
     <div className="watchlater">

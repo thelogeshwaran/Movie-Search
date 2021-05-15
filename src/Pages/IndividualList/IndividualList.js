@@ -6,10 +6,13 @@ import MovieCard from "../../Components/MovieCard/MovieCard";
 import ClearIcon from "@material-ui/icons/Clear";
 import IconButton from "@material-ui/core/IconButton";
 import firebase from "firebase";
+import { useAuthProvider } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 function IndividualList() {
   const { listId, userId } = useParams();
   const [movies, setMovies] = useState([]);
+  const { user } = useAuthProvider();
 
   useEffect(() => {
     db.collection("users")
@@ -25,12 +28,16 @@ function IndividualList() {
       });
   }, []);
 
-  const removeLike = (id) => {
-    db.collection("users")
+  const removeLike = (movie) => {
+    if(user){
+      db.collection("users")
       .doc(userId)
       .collection("playlist")
       .doc(listId)
-      .update({ data: firebase.firestore.FieldValue.arrayRemove(id) });
+      .update({ data: firebase.firestore.FieldValue.arrayRemove(movie) });
+    }else{
+      toast.error("You need to LogIn!");
+    }
   };
 
   return (

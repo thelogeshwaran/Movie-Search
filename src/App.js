@@ -4,13 +4,7 @@ import Header from "./Components/Header/Header";
 import HomePage from "./Pages/HomePage/HomePage";
 import Authentication from "./Authentication/Authentication";
 import { useAuthProvider } from "./Context/AuthProvider";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useNavigate,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchPage from "./Pages/Searchpage/SearchPage";
 import DetailPage from "./Pages/DetailPage/DetailPage";
 import LikedPage from "./Pages/Liked/LikedPage";
@@ -23,7 +17,6 @@ import MobileNav from "./Components/MobileNav/MobileNav";
 import { useMovieProvider } from "./Context/MovieProvider";
 
 function App() {
-  const { user } = useAuthProvider();
   const { mobileNavOpen } = useMovieProvider();
 
   return (
@@ -43,13 +36,13 @@ function App() {
               <DetailPage />
             </Route>
             <Route path="/liked/:userId">
-              {user ? <LikedPage /> : <Navigate to="/login" />}
+              <LikedPage />
             </Route>
             <Route path="/watchlater/:userId">
-              {user ? <WatchLater /> : <Navigate to="/login" />}
+              <WatchLater />
             </Route>
             <Route path="/playList/:userId">
-              {user ? <PlayList /> : <Navigate to="/login" />}
+              <PlayList />
             </Route>
             <Route path="/invdiuallist/:listId/:userId">
               <IndividualList />

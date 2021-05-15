@@ -5,10 +5,14 @@ import { db } from "../../Components/Firebase/firebase";
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import ClearIcon from "@material-ui/icons/Clear";
 import IconButton from "@material-ui/core/IconButton";
+import { toast } from "react-toastify";
+import { useAuthProvider } from "../../Context/AuthProvider";
+
 
 function LikedPage() {
   const { userId } = useParams();
   const [movies, setMovies] = useState([]);
+  const { user } = useAuthProvider();
 
   useEffect(() => {
     db.collection("users")
@@ -25,7 +29,11 @@ function LikedPage() {
   }, []);
 
   const removeLike = (id) => {
-    db.collection("users").doc(userId).collection("liked").doc(id).delete();
+    if(user){
+      db.collection("users").doc(userId).collection("liked").doc(id).delete();
+    }else{
+      toast.error("You need to LogIn!");
+    }
   };
   return (
     <div className="liked">
