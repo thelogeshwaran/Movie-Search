@@ -1,15 +1,15 @@
-.search__list{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    overflow-x: hidden;
-    overflow-y: scroll;  
+.search__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-.search__message{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 100px;
-    color: white;
+.search__message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  color: white;
 }

@@ -1,14 +1,14 @@
-.app{
+.app {
   position: relative;
 }
 
-.App{
+.App {
   width: 100vw;
   height: 100vh;
   background-image: linear-gradient(to right, #051421, #042727);
   box-sizing: border-box;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   overflow: hidden;
   /* color: white; */
 }
@@ -22,6 +22,6 @@
   border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #9CA3AF;
+  background-color: #9ca3af;
   border-radius: 0px;
 }

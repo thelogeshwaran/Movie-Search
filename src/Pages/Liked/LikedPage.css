@@ -1,26 +1,25 @@
-.liked{
-    color: white;
-    overflow-y: auto;
-    padding-bottom: 50px ;
+.liked {
+  color: white;
+  overflow-y: auto;
+  padding-bottom: 50px;
 }
 
-
-.liked__list{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    overflow-x: hidden;
-    overflow-y: scroll;  
+.liked__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-.list__info{
-    margin-top: 40px;
-}
-  
-.liked__header{
-    padding: 40px;
+.list__info {
+  margin-top: 40px;
 }
 
-.liked__remove{
-    margin-left: 20px;
+.liked__header {
+  padding: 40px;
+}
+
+.liked__remove {
+  margin-left: 20px;
 }

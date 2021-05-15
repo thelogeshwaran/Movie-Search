@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import HomeIcon from "@material-ui/icons/Home";
 import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 import SearchIcon from "@material-ui/icons/Search";
@@ -8,14 +8,13 @@ import "./Header.css";
 import { auth } from "../Firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useMovieProvider } from "../Context/MovieProvider";
+import { useMovieProvider } from "../../Context/MovieProvider";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { useAuthProvider } from "../Context/AuthProvider";
+import { useAuthProvider } from "../../Context/AuthProvider";
 import { GiPopcorn } from "react-icons/gi";
 import WatchLaterIcon from "@material-ui/icons/WatchLater";
-import MenuIcon from '@material-ui/icons/Menu';
-
+import MenuIcon from "@material-ui/icons/Menu";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -24,8 +23,6 @@ function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const { user } = useAuthProvider();
 
-  
-  
   const signOut = () => {
     auth.signOut();
   };
@@ -63,9 +60,8 @@ function Header() {
           </Link>
           <Link to={`/watchlater/${user.uid}`} className="link">
             <div className="header__icon">
-              
-              <WatchLaterIcon/>
-  
+              <WatchLaterIcon />
+
               <p>WatchLater</p>
             </div>
           </Link>
@@ -153,7 +149,7 @@ function Header() {
           </Menu>
         </div>
         <div className="mobile">
-          <MenuIcon onClick={()=> setMobileNavOpen(true)}/>
+          <MenuIcon onClick={() => setMobileNavOpen(true)} />
         </div>
       </div>
       {searchOpen && (

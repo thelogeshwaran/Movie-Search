@@ -6,10 +6,10 @@ import WatchLaterIcon from "@material-ui/icons/WatchLater";
 import IconButton from "@material-ui/core/IconButton";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import Tooltip from "@material-ui/core/Tooltip";
-import { API_KEY } from "../../Requests/requests";
+import { API_KEY } from "../../Components/Requests/requests";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import { db } from "../../Firebase/firebase";
+import { db } from "../../Components/Firebase/firebase";
 import { useAuthProvider } from "../../Context/AuthProvider";
 import { useMovieProvider } from "../../Context/MovieProvider";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -68,7 +68,7 @@ function DetailPage() {
       setFilteredMovie(findMovie);
       setLike(true);
     }
-  }, [data,likedMovies,watchLater]);
+  }, [data, likedMovies, watchLater]);
 
   function timeCalculator(totalMinutes) {
     var hours = Math.floor(totalMinutes / 60);
@@ -76,60 +76,58 @@ function DetailPage() {
     return `${hours}h ${minutes}m`;
   }
   const handleLike = () => {
-    if(user){
-        if (!like) {
-            db.collection("users")
-              .doc(user.uid)
-              .collection("liked")
-              .add({
-                name: data.title || data.original_name,
-                data: data,
-              });
-              setLike(true)
-          } else {
-              console.log(filteredMovie)
-            db.collection("users")
-              .doc(user.uid)
-              .collection("liked")
-              .doc(filteredMovie[0].id)
-              .delete();
-              setLike(false)
-          }
-    }else{
-        toast.error("You need to LogIn!")
+    if (user) {
+      if (!like) {
+        db.collection("users")
+          .doc(user.uid)
+          .collection("liked")
+          .add({
+            name: data.title || data.original_name,
+            data: data,
+          });
+        setLike(true);
+      } else {
+        db.collection("users")
+          .doc(user.uid)
+          .collection("liked")
+          .doc(filteredMovie[0].id)
+          .delete();
+        setLike(false);
+      }
+    } else {
+      toast.error("You need to LogIn!");
     }
   };
   const handleWatchLater = () => {
-    if(user){
-        if(!watchLaterIcon){
-            db.collection("users")
+    if (user) {
+      if (!watchLaterIcon) {
+        db.collection("users")
           .doc(user.uid)
           .collection("watchlater")
           .add({
             name: data.title || data.original_name,
             data: data,
           });
-          setWatchLaterIcon(true);
-        }else{
-            console.log(watchlatermovie)
-            db.collection("users")
-            .doc(user.uid)
-            .collection("watchlater")
-            .doc(watchlatermovie[0]?.id)
-            .delete();
-            setWatchLaterIcon(false);
-        }
-    }else{
-        toast.error("You need to LogIn!")
+        setWatchLaterIcon(true);
+      } else {
+        db.collection("users")
+          .doc(user.uid)
+          .collection("watchlater")
+          .doc(watchlatermovie[0]?.id)
+          .delete();
+        setWatchLaterIcon(false);
+      }
+    } else {
+      toast.error("You need to LogIn!");
     }
   };
 
   const handleClick = (event) => {
-   if(user){
-    setAnchorEl(event.currentTarget);
-   }else{
-    toast.error("You need to LogIn!")
-   }
+    if (user) {
+      setAnchorEl(event.currentTarget);
+    } else {
+      toast.error("You need to LogIn!");
+    }
   };
 
   const handleClose = (name) => {
@@ -166,8 +164,6 @@ function DetailPage() {
       setSelected(null);
     }
   };
-//   console.log(data);
-  //   console.log(playList)
 
   return (
     <div className="detailPage">
@@ -219,10 +215,7 @@ function DetailPage() {
             </div>
             <div className="detailPage__icons">
               <Tooltip title="Mark as favorite">
-                <IconButton
-                  onClick={() => 
-                    handleLike()}
-                >
+                <IconButton onClick={() => handleLike()}>
                   <FavoriteIcon
                     style={like ? { color: "#EC4899" } : { color: "white" }}
                   />
@@ -295,9 +288,7 @@ function DetailPage() {
               <Tooltip title="Watch Later">
                 <IconButton>
                   <WatchLaterIcon
-                    onClick={() => 
-                      handleWatchLater()
-                      }
+                    onClick={() => handleWatchLater()}
                     style={
                       watchLaterIcon ? { color: "#EC4899" } : { color: "white" }
                     }

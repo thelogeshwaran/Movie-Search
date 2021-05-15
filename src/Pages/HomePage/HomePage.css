@@ -1,11 +1,9 @@
-.homepage{
-    display: flex;
-    flex-direction: column;
-    height: 85vh;
-    
-    /* border: 1px solid red; */
+.homepage {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
 }
 
-.homepage__content{
-    overflow-y: scroll;
+.homepage__content {
+  overflow-y: scroll;
 }

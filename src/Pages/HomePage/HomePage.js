@@ -1,20 +1,19 @@
-import React,{useState} from 'react'
-import Navbar from "../../Navbar/Navbar";
-import MovieList from "../../MovieList/MovieList";
-import requests from "../../Requests/requests";
-import "./HomePage.css"
-
+import React, { useState } from "react";
+import Navbar from "../../Components/Navbar/Navbar";
+import MovieList from "../../Components/MovieList/MovieList";
+import requests from "../../Components/Requests/requests";
+import "./HomePage.css";
 
 function HomePage() {
-    const [selectedOption, setSelectedOption] = useState(requests.fetchAction);
-    return (
-        <div className="homepage">
-      <Navbar setSelectedOption={setSelectedOption}/>
+  const [selectedOption, setSelectedOption] = useState(requests.fetchAction);
+  return (
+    <div className="homepage">
+      <Navbar setSelectedOption={setSelectedOption} />
       <div className="homepage__content">
-      <MovieList selectedOption={selectedOption}/>
+        <MovieList selectedOption={selectedOption} />
       </div>
-        </div>
-    )
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;

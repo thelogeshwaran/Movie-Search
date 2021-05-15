@@ -1,23 +1,20 @@
-.individual{
-    color: white;
-    overflow-y: scroll;
-    padding-bottom: 40px;
+.individual {
+  color: white;
+  overflow-y: scroll;
+  padding-bottom: 40px;
 }
 
-.individual__list{
-    
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; 
-        overflow-x: hidden;
-      
-    
+.individual__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
-.individual__header{
-    padding: 40px;
+.individual__header {
+  padding: 40px;
 }
 
-.individual__remove{
-    margin-left: 20px;
+.individual__remove {
+  margin-left: 20px;
 }
