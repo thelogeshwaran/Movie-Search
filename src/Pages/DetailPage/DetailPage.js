@@ -325,7 +325,7 @@ function DetailPage() {
           <ReactPlayer
             className="react-player"
             url={`https://youtu.be/${
-              data?.videos?.results[0].key || data?.videos?.results[1].key
+              data?.videos?.results[0]?.key || data?.videos?.results[1]?.key
             }`}
             width="100%"
             height="100%"

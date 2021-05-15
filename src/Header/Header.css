@@ -88,3 +88,19 @@
     text-decoration: none;
     color:black;
 }
+
+.mobile{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header{
+        padding: 10px;
+    }
+    .mobile{
+        display: block;
+    }
+    .desktop{
+        display: none;
+    }
+}

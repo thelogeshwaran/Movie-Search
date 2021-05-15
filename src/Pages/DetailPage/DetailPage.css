@@ -110,6 +110,18 @@
   border: 3px solid white;
 }
 
+@media (max-width: 768px) {
+  .detailPage__body {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-/* max-width: 350px;
-  max-height: 300px; */
+  .detailPage__background{
+    display: none;
+  }
+
+  .react-player{
+    max-width: 350px;
+  max-height: 300px;
+  }
+}

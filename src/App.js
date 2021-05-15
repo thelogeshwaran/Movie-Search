@@ -13,9 +13,12 @@ import PlayList from "./Pages/PlayList/PlayList";
 import IndividualList from "./Pages/IndividualList/IndividualList";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import MobileNav from "./MobileNav/MobileNav";
+import { useMovieProvider } from "./Context/MovieProvider"
+ 
 function App() {
   const { user } = useAuthProvider();
+  const { mobileNavOpen } = useMovieProvider();  
 
   return (
     <div>
@@ -50,11 +53,10 @@ function App() {
               <Authentication/>
               </Route>
             </Routes>
+            {mobileNavOpen && <MobileNav/>}
           </BrowserRouter>
+         
         </div>
-        
-        
-      
     </div>
   );
 }

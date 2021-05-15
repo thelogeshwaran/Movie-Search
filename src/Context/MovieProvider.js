@@ -11,6 +11,7 @@ export function MovieProvider({ children }) {
   const[ searchOpen, setSearchOpen] = useState(false);
   const[ playList, setPlayList] = useState([]);
   const [watchLater, setWatchLater]= useState([]);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
       db.collection("users")
@@ -52,7 +53,7 @@ export function MovieProvider({ children }) {
 
 
   return (
-    <MovieContext.Provider value={{ searchOpen, setSearchOpen,likedMovies, setLikedMovies,playList, setPlayList,watchLater, setWatchLater }}>
+    <MovieContext.Provider value={{ searchOpen, setSearchOpen,likedMovies, setLikedMovies,playList, setPlayList,watchLater, setWatchLater,mobileNavOpen, setMobileNavOpen }}>
       {children}
     </MovieContext.Provider>
   );
