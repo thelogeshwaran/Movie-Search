@@ -15,7 +15,7 @@ function SearchPage() {
   useEffect(() => {
     async function fetchData() {
       const response = await axios.get(
-        `${search_api}movie?api_key=${API_KEY}&query=${query}`
+        `${search_api}movie?api_key=${process.env.REACT_APP_API_KEY}&query=${query}`
       );
       setSearchMovies(response.data.results);
     }

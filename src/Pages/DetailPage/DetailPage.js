@@ -46,7 +46,7 @@ function DetailPage() {
   useEffect(() => {
     async function fetchdata() {
       const response = await axios.get(
-        `${movie_api}${movieId}?api_key=${API_KEY}&append_to_response=videos`
+        `${movie_api}${movieId}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=videos`
       );
       setData(response.data);
     }
