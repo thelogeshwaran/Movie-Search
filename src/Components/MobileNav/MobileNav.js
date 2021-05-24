@@ -51,7 +51,7 @@ function MobileNav() {
         >
           <div className="mobile__icon">
             <VideoLibraryIcon />
-            <p>Collections</p>
+            <p>PlayList</p>
           </div>
         </Link>
         <Link
