@@ -108,9 +108,13 @@
 }
 
 @media (max-width: 768px) {
+  .detailPage{
+    height: 90vh;
+  }
   .detailPage__body {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 50px;
   }
 
   .detailPage__background {
