@@ -1,9 +1,8 @@
 import "./App.css";
 import React from "react";
-import Header from "./Components/Header/Header";
+import Header from "./Components/Navbar/Navbar";
 import HomePage from "./Pages/HomePage/HomePage";
 import Authentication from "./Authentication/Authentication";
-import { useAuthProvider } from "./Context/AuthProvider";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchPage from "./Pages/Searchpage/SearchPage";
 import DetailPage from "./Pages/DetailPage/DetailPage";
@@ -14,7 +13,7 @@ import IndividualList from "./Pages/IndividualList/IndividualList";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MobileNav from "./Components/MobileNav/MobileNav";
-import { useMovieProvider } from "./Context/MovieProvider";
+import { useMovieProvider } from "./Context/MovieContext";
 
 function App() {
   const { mobileNavOpen } = useMovieProvider();

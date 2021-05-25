@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { db } from "../Components/Firebase/firebase";
-import { useAuthProvider } from "./AuthProvider";
+import { useAuthProvider } from "./AuthContext";
 
 const MovieContext = createContext();
 

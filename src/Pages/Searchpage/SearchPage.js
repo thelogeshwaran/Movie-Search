@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { API_KEY } from "../../Components/Requests/requests";
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import "./SearchPage.css";
-import { useMovieProvider } from "../../Context/MovieProvider";
+import { useMovieProvider } from "../../Context/MovieContext";
 
 function SearchPage() {
   const { query } = useParams();

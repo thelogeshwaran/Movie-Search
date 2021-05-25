@@ -6,7 +6,7 @@ import MovieCard from "../../Components/MovieCard/MovieCard";
 import ClearIcon from "@material-ui/icons/Clear";
 import IconButton from "@material-ui/core/IconButton";
 import firebase from "firebase";
-import { useAuthProvider } from "../../Context/AuthProvider";
+import { useAuthProvider } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 
 function IndividualList() {

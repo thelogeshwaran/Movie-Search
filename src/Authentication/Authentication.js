@@ -2,16 +2,20 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../Components/Firebase/firebase";
 import "./Authentication.css";
 import { FcGoogle } from "react-icons/fc";
-import { useAuthProvider } from "../Context/AuthProvider";
+import { useAuthProvider } from "../Context/AuthContext";
 import firebase from "firebase";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
+
 
 function Authentication() {
   const [newUser, setNewUser] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [passwordShow, setPasswordShow] = useState("password");
   const { setUser } = useAuthProvider();
   const navigate = useNavigate();
 
@@ -22,6 +26,7 @@ function Authentication() {
         navigate("/");
       } else {
         setUser(false);
+        
       }
     });
   }, []);
@@ -36,7 +41,7 @@ function Authentication() {
     event.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((user) => {
+      .then(() => {
         clearInputs();
       })
       .catch((error) => {
@@ -68,6 +73,10 @@ function Authentication() {
       .catch((error) => {
         toast.error(error.message);
       });
+  };
+  const fillForm = () => {
+    setEmail("admin@gmail.com");
+    setPassword("admin@45");
   };
 
   return (
@@ -116,20 +125,48 @@ function Authentication() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
-              <input
-                type="password"
-                className="input"
-                placeholder="Password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></input>
-              <div>
-                Credentials : Email - admin@gmail.com
-                <br /> password : admin@45
+              <div className="password-field">
+                <input
+                  type={passwordShow}
+                  className="input"
+                  placeholder="Password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                ></input>
+                <div>
+                  {passwordShow === "password" ? (
+                    <AiFillEye
+                    onClick={()=>setPasswordShow("text")}
+                      style={{
+                        margin: "-20px 0px -20px -50px",
+                        height: "20px",
+                        width: "20px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  ) : (
+                    <AiFillEyeInvisible
+                    onClick={()=>setPasswordShow("password")}
+                      style={{
+                        margin: "-20px 0px -20px -50px",
+                        height: "20px",
+                        width: "20px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  )}
+                </div>
               </div>
-              <button type="submit" className=" submit">
+              <button type="submit" className="submit">
                 Sign In
+              </button>
+              <button
+                className="submit"
+                type="button"
+                onClick={() => fillForm()}
+              >
+                Guest
               </button>
             </form>
           ) : (
@@ -150,14 +187,40 @@ function Authentication() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
+              <div className="password-field">
               <input
-                type="password"
+                type={passwordShow}
                 className="input"
                 placeholder="Password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
+              <div>
+                  {passwordShow === "password" ? (
+                    <AiFillEye
+                    onClick={()=>setPasswordShow("text")}
+                      style={{
+                        margin: "-20px 0px -20px -50px",
+                        height: "20px",
+                        width: "20px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  ) : (
+                    <AiFillEyeInvisible
+                    onClick={()=>setPasswordShow("password")}
+                      style={{
+                        margin: "-20px 0px -20px -50px",
+                        height: "20px",
+                        width: "20px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  )}
+                </div>
+              </div>
+              
               <button type="submit" className="submit">
                 Sign Up
               </button>

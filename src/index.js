@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { AuthProvider } from "./Context/AuthProvider";
-import { MovieProvider } from "./Context/MovieProvider";
+import { AuthProvider } from "./Context/AuthContext";
+import { MovieProvider } from "./Context/MovieContext";
 
 ReactDOM.render(
   <React.StrictMode>

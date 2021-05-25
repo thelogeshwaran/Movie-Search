@@ -6,7 +6,7 @@ import MovieCard from "../../Components/MovieCard/MovieCard";
 import ClearIcon from "@material-ui/icons/Clear";
 import IconButton from "@material-ui/core/IconButton";
 import { toast } from "react-toastify";
-import { useAuthProvider } from "../../Context/AuthProvider";
+import { useAuthProvider } from "../../Context/AuthContext";
 
 
 function LikedPage() {
@@ -18,7 +18,7 @@ function LikedPage() {
     db.collection("users")
       .doc(userId)
       .collection("liked")
-      .onSnapshot((snap) => {
+      .onSnapshot((snap) => { 
         setMovies(
           snap.docs.map((doc) => ({
             id: doc.id,
