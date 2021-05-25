@@ -23,7 +23,6 @@
   margin: 7px;
   backdrop-filter: saturate(180%) blur(10px);
   border-radius: 10px;
-  /* border: 1px solid red; */
 }
 
 .playlist__body {
@@ -31,7 +30,6 @@
   flex-wrap: nowrap;
   justify-content: center;
   margin: 10px;
-  /* border: 1px solid red; */
 }
 
 .playlist__data {
@@ -50,6 +48,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.list__info {
+  margin-top: 40px;
 }
 
 .more > h2 {

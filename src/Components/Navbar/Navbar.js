@@ -16,7 +16,7 @@ import { GiPopcorn } from "react-icons/gi";
 import WatchLaterIcon from "@material-ui/icons/WatchLater";
 import MenuIcon from "@material-ui/icons/Menu";
 
-function Header() {
+function Navbar() {
   const [search, setSearch] = useState("");
   const { searchOpen, setSearchOpen, setMobileNavOpen } = useMovieProvider();
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ function Header() {
   const { user, setUser } = useAuthProvider();
 
   const signOut = () => {
+    console.log("signout")
     auth.signOut();
   };
 
@@ -139,9 +140,8 @@ function Header() {
             </Link>
             {user && (
               <MenuItem
-                onClick={() => {
-                  signOut();
-                }}
+                onClick={() => 
+                  signOut()}
               >
                 Logout
               </MenuItem>
@@ -176,4 +176,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navbar;

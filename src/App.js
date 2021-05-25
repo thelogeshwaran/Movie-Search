@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import Header from "./Components/Navbar/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import HomePage from "./Pages/HomePage/HomePage";
 import Authentication from "./Authentication/Authentication";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -14,16 +14,16 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MobileNav from "./Components/MobileNav/MobileNav";
 import { useMovieProvider } from "./Context/MovieContext";
+import { useAuthProvider } from "./Context/AuthContext";
 
 function App() {
   const { mobileNavOpen } = useMovieProvider();
-
   return (
     <div>
       <ToastContainer limit={3} />
       <div className="App">
         <BrowserRouter>
-          <Header />
+          <Navbar />
           <Routes>
             <Route path="/">
               <HomePage />

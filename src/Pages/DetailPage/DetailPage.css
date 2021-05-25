@@ -11,6 +11,10 @@
   );
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+}
 .detailPage__background {
   content: "";
   opacity: 0.1;

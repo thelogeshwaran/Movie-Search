@@ -14,7 +14,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
- 
+}
+.loader {
+  display: flex;
+  justify-content: center;
 }
 
 .search__message {

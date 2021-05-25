@@ -4,22 +4,8 @@
   padding-bottom: 50px;
 }
 
-.liked__list {
+.loader {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-.list__info {
-  margin-top: 40px;
-}
-
-.liked__header {
-  padding: 40px;
-}
-
-.liked__remove {
-  margin-left: 20px;
 }

@@ -31,7 +31,7 @@ function PlayList() {
       </div>
       <div>
         <div className="playlist__content">
-          {movies &&
+          {movies.length > 0 ? (
             movies.map((item) => (
               <div className="playlist__separate">
                 <Link
@@ -60,7 +60,13 @@ function PlayList() {
                   </div>
                 </Link>
               </div>
-            ))}
+            )))
+          :(
+            <div className="list__info">
+            <h2>You haven't added any  Movies...</h2>
+          </div>
+          )
+          }
           <div></div>
         </div>
       </div>

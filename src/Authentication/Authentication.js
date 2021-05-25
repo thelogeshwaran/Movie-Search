@@ -9,28 +9,29 @@ import { useNavigate } from "react-router-dom";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 
-
 function Authentication() {
   const [newUser, setNewUser] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [passwordShow, setPasswordShow] = useState("password");
-  const { setUser } = useAuthProvider();
+  const { user, setUser } = useAuthProvider();
   const navigate = useNavigate();
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log("set");
         setUser(user);
         navigate("/");
       } else {
+        console.log("come");
         setUser(false);
-        
       }
     });
   }, []);
 
+  console.log("auth", user);
   const clearInputs = () => {
     setName("");
     setEmail("");
@@ -111,7 +112,7 @@ function Authentication() {
                 cursor: "pointer",
                 margin: "10px",
               }}
-              onClick={hanldeGoogleAuth}
+              onClick={() => hanldeGoogleAuth()}
             />
           </div>
           <div className="breakline"></div>
@@ -137,7 +138,7 @@ function Authentication() {
                 <div>
                   {passwordShow === "password" ? (
                     <AiFillEye
-                    onClick={()=>setPasswordShow("text")}
+                      onClick={() => setPasswordShow("text")}
                       style={{
                         margin: "-20px 0px -20px -50px",
                         height: "20px",
@@ -147,7 +148,7 @@ function Authentication() {
                     />
                   ) : (
                     <AiFillEyeInvisible
-                    onClick={()=>setPasswordShow("password")}
+                      onClick={() => setPasswordShow("password")}
                       style={{
                         margin: "-20px 0px -20px -50px",
                         height: "20px",
@@ -188,18 +189,18 @@ function Authentication() {
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
               <div className="password-field">
-              <input
-                type={passwordShow}
-                className="input"
-                placeholder="Password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></input>
-              <div>
+                <input
+                  type={passwordShow}
+                  className="input"
+                  placeholder="Password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                ></input>
+                <div>
                   {passwordShow === "password" ? (
                     <AiFillEye
-                    onClick={()=>setPasswordShow("text")}
+                      onClick={() => setPasswordShow("text")}
                       style={{
                         margin: "-20px 0px -20px -50px",
                         height: "20px",
@@ -209,7 +210,7 @@ function Authentication() {
                     />
                   ) : (
                     <AiFillEyeInvisible
-                    onClick={()=>setPasswordShow("password")}
+                      onClick={() => setPasswordShow("password")}
                       style={{
                         margin: "-20px 0px -20px -50px",
                         height: "20px",
@@ -220,7 +221,7 @@ function Authentication() {
                   )}
                 </div>
               </div>
-              
+
               <button type="submit" className="submit">
                 Sign Up
               </button>

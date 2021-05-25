@@ -2,7 +2,7 @@ import React from "react";
 import "./Categories.css";
 import requests from "../Requests/requests";
 
-function Navbar({ setSelectedOption }) {
+function Categories({ setSelectedOption }) {
   return (
     <div className="nav">
       <h2 onClick={() => setSelectedOption(requests.fetchTrending)}>
@@ -26,4 +26,4 @@ function Navbar({ setSelectedOption }) {
   );
 }
 
-export default Navbar;
+export default Categories;

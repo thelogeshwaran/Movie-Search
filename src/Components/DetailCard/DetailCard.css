@@ -1,0 +1,15 @@
+.detailCard__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.detailCard__remove {
+  margin-left: 20px;
+}
+
+.list__info {
+  margin-top: 40px;
+}

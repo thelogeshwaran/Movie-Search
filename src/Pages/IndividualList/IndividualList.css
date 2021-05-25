@@ -3,18 +3,10 @@
   overflow-y: scroll;
   padding-bottom: 40px;
 }
-
-.individual__list {
+.loader {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  overflow-x: hidden;
 }
-
 .individual__header {
   padding: 40px;
-}
-
-.individual__remove {
-  margin-left: 20px;
 }

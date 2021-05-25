@@ -1,24 +1,9 @@
 .watchlater {
-    color: white;
-    overflow-y: auto;
-    padding-bottom: 50px;
-  }
-  
-  .watchlater__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
-  
-  .watchlater__info {
-    margin-top: 40px;
-  }
-  
-  .watchlater__header {
-    padding: 40px;
-  }
-  
+  color: white;
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
 
-  
+.watchlater__header {
+  padding: 40px;
+}

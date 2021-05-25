@@ -16,7 +16,6 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 function MobileNav() {
   const { user } = useAuthProvider();
   const { searchOpen, setSearchOpen, setMobileNavOpen } = useMovieProvider();
-  
 
   const signOut = () => {
     auth.signOut();
@@ -59,9 +58,7 @@ function MobileNav() {
           className="link"
           onClick={() => setMobileNavOpen(false)}
         >
-          <div
-            className="mobile__icon"
-          >
+          <div className="mobile__icon">
             <ThumbUpIcon />
             <p>Favorites</p>
           </div>
